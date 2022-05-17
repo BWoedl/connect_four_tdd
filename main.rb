@@ -7,4 +7,3 @@ game = Game.new
 board = Board.new
 
 board.update_board(player, 'a4')
-#   

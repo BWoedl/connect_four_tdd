@@ -1,6 +1,8 @@
 require_relative 'player'
 
 class Board
+  attr_accessor :spaces
+
   INITIAL_SPACES = [' ', ' ', ' ', ' ', ' ', ' ', ' ',
                     ' ', ' ', ' ', ' ', ' ', ' ', ' ',
                     ' ', ' ', ' ', ' ', ' ', ' ', ' ',
@@ -9,8 +11,6 @@ class Board
                     ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
   AVAILABLE_ROWS = 'abcdef'
-
-  attr_accessor :spaces
 
   def initialize(spaces = INITIAL_SPACES)
     @spaces = spaces
@@ -30,23 +30,6 @@ class Board
   end
 
   def get_player_symbol(player)
-    symbol = player.number == 1 ? '🔴' : '🟣'
+    player.number == 1 ? '🔴' : '🟣'
   end
 end
-
-# a1 = 0
-# a2 = 1
-# a3 = 2
-# a4 = 3
-# a5 = 4
-# a6 = 5
-# a7 = 6
-# b1 = 7
-# b2 = 8
-# b3 = 9
-# b4 = 10 
-# b5 = 11 
-# b6 = 12
-# b7 = 13
-# c1 = 14
-

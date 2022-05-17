@@ -7,5 +7,6 @@ class Game
 
   def display
     p @board.spaces
+    ## come back and fix this
   end
 end
