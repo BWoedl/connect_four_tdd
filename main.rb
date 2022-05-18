@@ -5,3 +5,4 @@ require_relative 'lib/player'
 player = Player.new
 board = Board.new
 game = Game.new(board)
+

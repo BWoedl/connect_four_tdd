@@ -6,8 +6,13 @@ class Game
   end
 
   def display
-    p @board.spaces
-    ## come back and fix this
+    @board.spaces.each do |row|
+      line = ''
+      row.each do |space|
+        space.empty? ? line += '|  ' : line += "|#{space}"
+      end
+      puts "#{line}|\n----------------------"
+    end
   end
 
   def game_over?(player1, player2)
@@ -15,7 +20,7 @@ class Game
   end
 
   def won?(player)
-    check_horizontal(player) || check_vertical(player)
+    check_horizontal(player) || check_vertical(player) || check_diagonal(player)
   end
 
   def draw?
