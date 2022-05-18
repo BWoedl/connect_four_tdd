@@ -3,33 +3,31 @@ require_relative 'player'
 class Board
   attr_accessor :spaces
 
-  INITIAL_SPACES = [' ', ' ', ' ', ' ', ' ', ' ', ' ',
-                    ' ', ' ', ' ', ' ', ' ', ' ', ' ',
-                    ' ', ' ', ' ', ' ', ' ', ' ', ' ',
-                    ' ', ' ', ' ', ' ', ' ', ' ', ' ',
-                    ' ', ' ', ' ', ' ', ' ', ' ', ' ',
-                    ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-
   AVAILABLE_ROWS = 'abcdef'
 
-  def initialize(spaces = INITIAL_SPACES)
+  def initialize(spaces = create_board)
     @spaces = spaces
   end
 
   def update_board(player, move)
     update = translate_input(player, move)
-    @spaces[update[1]] = update[0]
+    @spaces[update[1][0]][update[1][1]] = update[0]
   end
 
   def translate_input(player, move)
-    translation = [get_player_symbol(player)]
+    translation = [player.get_symbol]
 
     row = AVAILABLE_ROWS.index(move[0]).to_i
-    column = move[1].to_i
-    translation << row * 7 + column - 1
+    column = move[1].to_i - 1
+    translation << [row, column]
   end
 
-  def get_player_symbol(player)
-    player.number == 1 ? '🔴' : '🟣'
+  def create_board
+    empty_board = []
+
+    6.times do
+      empty_board << ['','','','','','','']
+    end
+    empty_board
   end
 end
